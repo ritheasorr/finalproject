@@ -23,7 +23,7 @@ class ProductList extends StatelessWidget {
         print('Products in StreamBuilder: ${products.length}');
 
         return SizedBox(
-        height: 200,
+          height: 280,
         child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: products.length,
@@ -50,13 +50,14 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: SizedBox(
-        width: 150,
+        width: 180,
         child: Column(
           children: [
             Image.network(
-              product.Image,
+              product.ImageUrl,
               errorBuilder: (context, error, stackTrace) {
-                print('Image loading error: $error');
+                debugPrint('Image loading error: ${error.toString()}');
+
                 return const Icon(Icons.error);
               },
               loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
@@ -71,6 +72,7 @@ class ProductCard extends StatelessWidget {
               },
             ),
             Text(product.Name),
+            Text(product.Description),
             Text('\$${product.Price.toStringAsFixed(2)}'),
           ],
         ),

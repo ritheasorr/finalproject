@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:finalproject/widgets/user_account.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 
 class MenuButton extends StatefulWidget{
   const MenuButton({super.key});
@@ -13,70 +16,88 @@ class _MenuButton extends State<MenuButton>{
     return Drawer(
         child: new ListView(
           children: <Widget>[
-            UserAccountsDrawerHeader(
-              accountName: Text('Testing'),
-              accountEmail: Text('testing1@gmail.com'),
-              currentAccountPicture: GestureDetector(
-                child: CircleAvatar(
-                  backgroundColor: Colors.green,
-                  child: Icon(Icons.person, color: Colors.white,),
-                ),
-              ),
-              decoration: BoxDecoration(
-                  color: Colors.blueAccent
-              ),
-            ),
-
+            UserAccountsDrawerHeaderWidget(),
             InkWell(
-              onTap:(){},
+              onTap: () {
+                // Handle navigation to Home page
+                Navigator.pushNamed(context, '/home');
+              },
               child: ListTile(
-                  title: Text('Home page'),
-                  leading: Icon(Icons.home)
-              ),
-            ),
-
-            InkWell(
-              onTap:(){},
-              child: ListTile(
-                  title: Text('Home page'),
-                  leading: Icon(Icons.home)
-              ),
-            ),
-
-            InkWell(
-              onTap:(){},
-              child: ListTile(
-                  title: Text('Home page'),
-                  leading: Icon(Icons.home)
+                title: Text('Home page'),
+                leading: Icon(Icons.home),
               ),
             ),
             InkWell(
-              onTap:(){},
+              onTap: () {
+                // Handle navigation to My Account page
+                Navigator.pushNamed(context, '/account');
+              },
               child: ListTile(
-                  title: Text('Home page'),
-                  leading: Icon(Icons.home)
+                title: Text('My Account'),
+                leading: Icon(Icons.person),
               ),
             ),
             InkWell(
-              onTap:(){},
+              onTap: () {
+                // Handle navigation to My Orders page
+                Navigator.pushNamed(context, '/orders');
+              },
               child: ListTile(
-                  title: Text('Home page'),
-                  leading: Icon(Icons.home)
+                title: Text('My Orders'),
+                leading: Icon(Icons.shopping_bag),
+              ),
+            ),
+            InkWell(
+              onTap: () {
+                // Handle navigation to Categories page
+                Navigator.pushNamed(context, '/categories');
+              },
+              child: ListTile(
+                title: Text('Categories'),
+                leading: Icon(Icons.category),
+              ),
+            ),
+            InkWell(
+              onTap: () {
+                // Handle navigation to Wishlist page
+                Navigator.pushNamed(context, '/wishlist');
+              },
+              child: ListTile(
+                title: Text('Wishlist'),
+                leading: Icon(Icons.favorite),
               ),
             ),
             Divider(),
             InkWell(
-              onTap:(){},
+              onTap: () {
+                // Handle navigation to About Us page
+                Navigator.pushNamed(context, '/about');
+              },
               child: ListTile(
-                  title: Text('Home page'),
-                  leading: Icon(Icons.home)
+                title: Text('About Us'),
+                leading: Icon(Icons.info),
               ),
             ),
             InkWell(
-              onTap:(){},
+              onTap: () {
+                // Handle navigation to Contact Us page
+                Navigator.pushNamed(context, '/contact');
+              },
               child: ListTile(
-                  title: Text('Home page'),
-                  leading: Icon(Icons.home)
+                title: Text('Contact Us'),
+                leading: Icon(Icons.phone),
+              ),
+            ),
+            InkWell(
+              onTap: () async {
+                // Handle logout
+                await FirebaseAuth.instance.signOut();
+                // Navigate to login screen
+                Navigator.pushReplacementNamed(context, '/login');
+              },
+              child: ListTile(
+                title: Text('Logout'),
+                leading: Icon(Icons.logout),
               ),
             ),
           ],

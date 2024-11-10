@@ -5,6 +5,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'screens/login_screen.dart';
 import 'package:finalproject/screens/register_screen.dart';
+import 'package:finalproject/screens/reset_password_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -56,6 +57,7 @@ class _MyAppState extends State<MyApp> {
         ),
         '/register': (context) => RegisterScreen(),
         '/login': (context) => LoginScreen(),
+        '/reset-password': (context) => ResetPasswordScreen(),
       },
     );
   }

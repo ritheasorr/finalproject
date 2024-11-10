@@ -4,21 +4,17 @@ class Product {
   final String Name;
   final double Price;
   final String Description;
-  final String Image;
+  final String ImageUrl;
 
-  Product({required this.Name, required this.Price, required this.Description, required this.Image});
+  Product({required this.Name, required this.Price, required this.Description, required this.ImageUrl});
 
   factory Product.fromFirestore(DocumentSnapshot doc) {
     Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
-    print('ProductName: ${data['Name']}');
-    print('ProductPrice: ${data['Price']}');
-    print('ProductDescription: ${data['Description']}');
-    print('ProductImage: ${data['ImageUrl']}');
     return Product(
       Name: data['Name']??'',
       Price: data['Price']??'' as double, // Type conversion
-      Description: '',
-      Image: '',
+      Description: data['Description']??'',
+      ImageUrl: data['ImageUrl']??'',
     );
 
   }
@@ -29,9 +25,7 @@ Stream<List<Product>> getProducts() {
       .collection('1') // Use the new collection name
       .snapshots()
       .map((snapshot) {
-    print('Fetched documents: ${snapshot.docs}'); // Print fetched documents
     var products = snapshot.docs.map((doc) => Product.fromFirestore(doc)).toList();
-    print('Products list: $products'); // Print the list of products
     return products;
   });
 }

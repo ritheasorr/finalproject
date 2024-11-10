@@ -23,7 +23,7 @@ class _HomeState extends State<HomePage> {
       body: ListView(
         children: <Widget>[
           CarouselContent(),
-          SizedBox(height:10),
+          SizedBox(height:20),
           CategoryButtons(),
           SizedBox(height: 20),
           ProductList(),
