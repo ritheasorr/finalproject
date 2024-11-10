@@ -1,7 +1,9 @@
-import 'package:finalproject/pages/app_bar.dart';
+import 'package:finalproject/widgets/app_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:finalproject/pages/carousel_content.dart';
-import 'package:finalproject/pages/menu_button.dart';
+import 'package:finalproject/widgets/carousel_content.dart';
+import 'package:finalproject/widgets/menu_button.dart';
+import 'package:finalproject/widgets/cate_button.dart';
+import 'package:finalproject/widgets/product_list.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -21,6 +23,10 @@ class _HomeState extends State<HomePage> {
       body: ListView(
         children: <Widget>[
           CarouselContent(),
+          SizedBox(height:10),
+          CategoryButtons(),
+          SizedBox(height: 20),
+          ProductList(),
         ],
       ),
     );

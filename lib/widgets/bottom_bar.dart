@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:finalproject/pages/home_page.dart';
+import 'package:finalproject/screens/home_page.dart';
 
 
 class BottomNavigationBarExample extends StatefulWidget {
-  const BottomNavigationBarExample({super.key});
+  const BottomNavigationBarExample({super.key, required int selectedIndex, required void Function(int index) onItemTapped});
 
   @override
   State<BottomNavigationBarExample> createState() =>

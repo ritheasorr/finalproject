@@ -7,7 +7,7 @@ class CarouselContent extends StatelessWidget {
     return CarouselSlider(
       options: CarouselOptions(
         height: 200.0,
-        autoPlay: true,
+        autoPlay: false,
         enlargeCenterPage: true,
         enableInfiniteScroll: true,
         autoPlayCurve: Curves.fastEaseInToSlowEaseOut,

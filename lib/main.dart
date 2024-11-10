@@ -1,12 +1,40 @@
 import 'package:flutter/material.dart';
-import 'pages/home_page.dart';
-import 'pages/bottom_bar.dart';
-import 'package:finalproject/pages/menu_button.dart';
+import 'screens/home_page.dart';
+import 'widgets/bottom_bar.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+import 'screens/login_screen.dart';
+import 'package:finalproject/screens/register_screen.dart';
 
-void main() => runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(const MyApp());
+}
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  int _selectedIndex = 0; // Track the selected index
+
+  // List of screens to display
+  final List<Widget> _screens = [
+    HomePage(),
+    // Add your other screens here
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,8 +44,19 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      home: BottomNavigationBarExample(),
+
+      home: LoginScreen(),
+      routes: {
+        '/home': (context) => Scaffold( // Wrap with Scaffold here
+          body: _screens[_selectedIndex],
+          bottomNavigationBar: BottomNavigationBarExample(
+            selectedIndex: _selectedIndex,
+            onItemTapped: _onItemTapped,
+          ),
+        ),
+        '/register': (context) => RegisterScreen(),
+        '/login': (context) => LoginScreen(),
+      },
     );
   }
 }
-
