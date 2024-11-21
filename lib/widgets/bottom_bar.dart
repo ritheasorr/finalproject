@@ -24,6 +24,10 @@ class _BottomNavigationBarExampleState
   static List<Widget> _widgetOptions = <Widget>[
     HomePage(),// Index 0
     DiscoveryPage(),
+    const Text(
+      'Index 2: upload',
+      style: optionStyle,
+    ),
     CartPage(),
     const Text(
       'Index 4: Profile',
