@@ -57,16 +57,6 @@ class _MenuButton extends State<MenuButton>{
                 leading: Icon(Icons.category),
               ),
             ),
-            InkWell(
-              onTap: () {
-                // Handle navigation to Wishlist page
-                Navigator.pushNamed(context, '/wishlist');
-              },
-              child: ListTile(
-                title: Text('Wishlist'),
-                leading: Icon(Icons.favorite),
-              ),
-            ),
             Divider(),
             InkWell(
               onTap: () {

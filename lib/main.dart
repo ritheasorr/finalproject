@@ -6,6 +6,7 @@ import 'firebase_options.dart';
 import 'screens/login_screen.dart';
 import 'package:finalproject/screens/register_screen.dart';
 import 'package:finalproject/screens/reset_password_screen.dart';
+import 'package:finalproject/screens/discovery_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -58,6 +59,7 @@ class _MyAppState extends State<MyApp> {
         '/register': (context) => RegisterScreen(),
         '/login': (context) => LoginScreen(),
         '/reset-password': (context) => ResetPasswordScreen(),
+        '/categories': (context) => DiscoveryPage(),
       },
     );
   }
