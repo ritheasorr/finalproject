@@ -1,36 +1,37 @@
-import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Product {
-  /// [productName],[productImg],[productDetails],[productCategory],[productSizes],[productPrice],[productRating],[productColors],[productCount] cannot be null
-
-  String id,productName, productImg, productDetails, productCategory, productSizes, ownerEmail;
-  double productPrice, productRating;
-  int productCount,productColors;
+  final String Name;
+  final double Price;
+  //final String Description;
+  final String ImageUrl;
 
   Product({
-    required this.id,
-    required this.ownerEmail,
-    required this.productName,
-    required this.productImg,
-    required this.productDetails,
-    required this.productCategory,
-    required this.productColors,
-    required this.productPrice,
-    required this.productSizes,
-    required this.productRating,
-    required this.productCount,
-  });
+    required this.Name,
+    required this.Price,
+    // required this.Description,
+    required this.ImageUrl});
 
-  Product.fromMap(Map <String, dynamic> snapshot,String id) :
-        id = id,
-        ownerEmail = snapshot['ownerEmail'] ?? '',
-        productName = snapshot['productName'] ??'',
-        productImg = snapshot['productImg'] ??'',
-        productDetails = snapshot['productDetails'] ??'',
-        productCategory = snapshot['productCategory'] ??'',
-        productColors = snapshot['productColors'] ??'',
-        productPrice = snapshot['productPrice'] ??'',
-        productSizes = snapshot['productSizes'] ??'',
-        productRating = snapshot['productRating'] ??'',
-        productCount = snapshot['productCount'] ??'';
+  factory Product.fromFirestore(DocumentSnapshot doc) {
+    Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+    return Product(
+      Name: data['Name']??'',
+      Price: data['Price']??'' as double, // Type conversion
+      // Description: data['Description']??'',
+      ImageUrl: data['ImageUrl']??'',
+    );
+
+  }
 }
+
+Stream<List<Product>> getProducts() {
+  return FirebaseFirestore.instance
+      .collection('1') // Use the new collection name
+      .snapshots()
+      .map((snapshot) {
+    var products = snapshot.docs.map((doc) => Product.fromFirestore(doc)).toList();
+    return products;
+  });
+}
+
+
