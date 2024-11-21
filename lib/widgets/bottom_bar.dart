@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:finalproject/screens/home_page.dart';
+
+import '../screens/cart_page.dart';
+
 import 'package:finalproject/screens/discovery_page.dart';
+
 
 
 class BottomNavigationBarExample extends StatefulWidget {
@@ -16,18 +20,12 @@ class _BottomNavigationBarExampleState
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
   TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
+  
+  static List<Widget> _widgetOptions = <Widget>[
     HomePage(),// Index 0
     DiscoveryPage(),
-    Text(
-      'Index 2: Upload',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 3: Cart',
-      style: optionStyle,
-    ),
-    Text(
+    CartPage(),
+    const Text(
       'Index 4: Profile',
       style: optionStyle,
     ),
@@ -53,35 +51,35 @@ class _BottomNavigationBarExampleState
               padding: const EdgeInsets.only(top: 16.0),  // Adjusts vertical alignment
               child: Icon(Icons.storefront),
             ),
-            label: '',
+            label: 'Home',
           ),
           BottomNavigationBarItem(
             icon: Padding(
               padding: const EdgeInsets.only(top: 16.0),
               child: Icon(Icons.search),
             ),
-            label: '',
+            label: 'Search',
           ),
           BottomNavigationBarItem(
             icon: Padding(
               padding: const EdgeInsets.only(top: 16.0),
               child: Icon(Icons.file_upload_outlined),
             ),
-            label: '',
+            label: 'Upload',
           ),
           BottomNavigationBarItem(
             icon: Padding(
               padding: const EdgeInsets.only(top: 16.0),
               child: Icon(Icons.shopping_cart),
             ),
-            label: '',
+            label: 'Cart',
           ),
           BottomNavigationBarItem(
             icon: Padding(
               padding: const EdgeInsets.only(top: 16.0),
               child: Icon(Icons.person),
             ),
-            label: '',
+            label: 'Profile',
           ),
         ],
         currentIndex: _selectedIndex,
@@ -92,3 +90,6 @@ class _BottomNavigationBarExampleState
     );
   }
 }
+
+
+
