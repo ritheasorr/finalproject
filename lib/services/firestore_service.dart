@@ -1,4 +1,4 @@
-import 'package:finalproject/models/orders.dart';
+
 import 'package:finalproject/models/product.dart';
 import 'package:finalproject/models/users.dart';
 import 'package:finalproject/services/auth_service.dart';
@@ -90,80 +90,6 @@ class FirestoreService{
         .collection('users-liked-items')
         .doc(id)
         .delete();
-  }
-
-  //Read
-  Stream<List<Product>> getProducts() {
-    return FirebaseFirestore.instance
-        .collection('products')
-        .snapshots()
-        .map((snapshot) => snapshot.docs
-        .map<Product>((doc) => Product.fromMap(doc.data(), doc.id))
-        .toList());
-  }
-
-  Stream<List<Orders>> getUsersOrders() {
-    return FirebaseFirestore.instance
-        .collection('users')
-        .doc(authService.getCurrentUser()!.email)
-        .collection('users-orders-history')
-        .snapshots()
-        .map((snapshot) => snapshot.docs
-        .map<Orders>((doc) => Orders.fromMap(doc.data(), doc.id))
-        .toList(),);
-  }
-
-  Stream<List<Product>> getProductsByRating() {
-    return FirebaseFirestore.instance
-        .collection('products')
-        .orderBy('productRating',descending: true)
-        .snapshots()
-        .map((snapshot) => snapshot.docs
-        .map<Product>((doc) => Product.fromMap(doc.data(), doc.id))
-        .toList());
-  }
-
-  Stream<List<Product>> getProductsByCategory(categoryName) {
-    return FirebaseFirestore.instance
-        .collection('products')
-        .orderBy('productRating',descending: true)
-        .where('productCategory', isEqualTo:categoryName)
-        .snapshots()
-        .map((snapshot) => snapshot.docs
-        .map<Product>((doc) => Product.fromMap(doc.data(), doc.id))
-        .toList());
-  }
-
-  Stream<List<Product>> getProductsByText(searchInput) {
-    return FirebaseFirestore.instance
-        .collection('products')
-        .where('productName', isEqualTo: searchInput )
-        .snapshots()
-        .map((snapshot) => snapshot.docs
-        .map<Product>((doc) => Product.fromMap(doc.data(), doc.id))
-        .toList());
-  }
-
-  Stream<List<Product>> getUserCartItems() {
-    return FirebaseFirestore.instance
-        .collection('users')
-        .doc(authService.getCurrentUser()!.email)
-        .collection('users-cart-items')
-        .snapshots()
-        .map((snapshot) => snapshot.docs
-        .map<Product>((doc) => Product.fromMap(doc.data(), doc.id))
-        .toList());
-  }
-
-  Stream<List<Product>> getUserLikedItems() {
-    return FirebaseFirestore.instance
-        .collection('users')
-        .doc(authService.getCurrentUser()!.email)
-        .collection('users-liked-items')
-        .snapshots()
-        .map((snapshot) => snapshot.docs
-        .map<Product>((doc) => Product.fromMap(doc.data(), doc.id))
-        .toList());
   }
 
 
