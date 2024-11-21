@@ -3,7 +3,8 @@ import 'package:finalproject/services/firestore_service.dart';
 import 'package:flutter/material.dart';
 
 class RegisterScreen extends StatefulWidget {
-  static String routeName= '/register';
+  static String routeName = '/register';
+
   @override
   State<RegisterScreen> createState() => _RegisterScreenState();
 }
@@ -25,22 +26,27 @@ class _RegisterScreenState extends State<RegisterScreen> {
         FocusScope.of(context).unfocus();
         ScaffoldMessenger.of(context).hideCurrentSnackBar();
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text('Password and Confirm Password does not match!'),));
+          content: Text('Password and Confirm Password do not match!'),
+        ));
+        return;
       }
       AuthService authService = AuthService();
       FirestoreService fsService = FirestoreService();
       return authService.register(email, password).then((value) {
-        return fsService.addUser(email, userName, phoneNo).then((value){
+        return fsService.addUser(email, userName, phoneNo).then((value) {
           FocusScope.of(context).unfocus();
           ScaffoldMessenger.of(context).hideCurrentSnackBar();
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('User Registered successfully!'),));
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text('User Registered successfully!'),
+          ));
         });
       }).catchError((error) {
         FocusScope.of(context).unfocus();
         String message = error.toString();
         ScaffoldMessenger.of(context).hideCurrentSnackBar();
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content:
-        Text(message),));
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text(message),
+        ));
       });
     }
   }
@@ -48,89 +54,114 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title:Text('Register'),
-    ),body: Form(
-      key: form,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          TextFormField(
-            decoration: InputDecoration(label: Text('Username')),
-            keyboardType: TextInputType.text,
-            validator: (value) {
-              if (value == null)
-                return "Please provide an username.";
-              else
-                return null;
-            },
-            onSaved: (value) {
-              userName = value;
-            },
+      body: Center(
+        child: Container(
+          padding: EdgeInsets.all(20),
+          margin: EdgeInsets.all(20),
+          decoration: BoxDecoration(
+            color: Color(0xFFD0D6E1), // Light gray background
+            borderRadius: BorderRadius.circular(20),
           ),
-          TextFormField(
-            decoration: InputDecoration(label: Text('Email')),
-            keyboardType: TextInputType.emailAddress,
-            validator: (value) {
-              if (value == null)
-                return "Please provide an email address.";
-              else if (!value.contains('@'))
-                return "Please provide a valid email address.";
-              else
-                return null;
-            },
-            onSaved: (value) {
-              email = value;
-            },
+          child: Form(
+            key: form,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Text(
+                  'Register a new account',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: 20),
+                buildTextFormField('Full Name', TextInputType.text, (value) {
+                  if (value == null || value.isEmpty) return "Please provide a name.";
+                  return null;
+                }, (value) {
+                  userName = value;
+                }),
+                SizedBox(height: 10),
+                buildTextFormField('Phone Number', TextInputType.phone, (value) {
+                  if (value == null || value.isEmpty) return "Please provide a phone number.";
+                  return null;
+                }, (value) {
+                  phoneNo = value;
+                }),
+                SizedBox(height: 10),
+                buildTextFormField('Email', TextInputType.emailAddress, (value) {
+                  if (value == null || !value.contains('@')) return "Please provide a valid email.";
+                  return null;
+                }, (value) {
+                  email = value;
+                }),
+                SizedBox(height: 10),
+                buildTextFormField('Password', TextInputType.visiblePassword, (value) {
+                  if (value == null || value.length < 6) return "Password must be at least 6 characters.";
+                  return null;
+                }, (value) {
+                  password = value;
+                }, obscureText: true),
+                SizedBox(height: 10),
+                buildTextFormField('Confirm Password', TextInputType.visiblePassword, (value) {
+                  if (value == null || value.length < 6) return "Password must be at least 6 characters.";
+                  return null;
+                }, (value) {
+                  confirmPassword = value;
+                }, obscureText: true),
+                SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: register,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.black,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    padding: EdgeInsets.symmetric(vertical: 15),
+                  ),
+                  child: Text('Sign Up', style: TextStyle(fontSize: 16, color: Colors.white)),
+                ),
+                SizedBox(height: 20),
+                TextButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/login');
+                    // Navigate to the login screen
+                  },
+                  child: Text(
+                    'Already have an account? Log In',
+                    style: TextStyle(color: Colors.black, fontSize: 14),
+                  ),
+                ),
+              ],
+            ),
           ),
-          TextFormField(
-            decoration: InputDecoration(label: Text('Phone Number')),
-            keyboardType: TextInputType.number,
-            validator: (value) {
-              if (value == null)
-                return "Please provide an mobile number.";
-              else
-                return null;
-            },
-            onSaved: (value) {
-              phoneNo = value;
-            },
-          ),
-          TextFormField(
-            decoration: InputDecoration(label: Text('Password')),
-            obscureText: true,
-            validator: (value) {
-              if (value == null)
-                return 'Please provide a password.';
-              else if (value.length < 6)
-                return 'Password must be at least 6 characters.';
-              else
-                return null;
-            },
-            onSaved: (value) {
-              password = value;
-            },
-          ),
-          TextFormField(
-            decoration: InputDecoration(label: Text('Confirm Password')),
-            obscureText: true,
-            validator: (value) {
-              if (value == null)
-                return 'Please provide a password.';
-              else if (value.length < 6)
-                return 'Password must be at least 6 characters.';
-              else
-                return null;
-            },
-            onSaved: (value) {
-              confirmPassword = value;
-            },
-          ),
-          SizedBox(height: 20),
-          ElevatedButton(onPressed: () { register(); }, child: Text('Register')),
-        ],
+        ),
       ),
-    ),
+    );
+  }
+
+  Widget buildTextFormField(
+      String label,
+      TextInputType keyboardType,
+      String? Function(String?) validator,
+      void Function(String?) onSaved, {
+        bool obscureText = false,
+      }) {
+    return TextFormField(
+      decoration: InputDecoration(
+        labelText: label,
+        labelStyle: TextStyle(color: Colors.white), // White text color
+        filled: true,
+        fillColor: Color(0xFF13539E), // Blue background
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+      ),
+      style: TextStyle(color: Colors.white),
+      keyboardType: keyboardType,
+      obscureText: obscureText,
+      validator: validator,
+      onSaved: onSaved,
     );
   }
 }
+
