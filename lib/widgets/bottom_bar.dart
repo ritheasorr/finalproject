@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:finalproject/screens/home_page.dart';
+import 'package:finalproject/screens/discovery_page.dart';
 
 
 class BottomNavigationBarExample extends StatefulWidget {
@@ -17,10 +18,7 @@ class _BottomNavigationBarExampleState
   TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
     HomePage(),// Index 0
-    Text(
-      'Index 1: Discovery',
-      style: optionStyle,
-    ),
+    DiscoveryPage(),
     Text(
       'Index 2: Upload',
       style: optionStyle,

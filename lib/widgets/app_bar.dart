@@ -9,11 +9,11 @@ class CAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: Text('Fenz'),
       actions: <Widget>[
         IconButton(
-          icon: Icon(Icons.search, color: Colors.white),
+          icon: Icon(Icons.search, color: Colors.black),
           onPressed: () {},
         ),
         IconButton(
-          icon: Icon(Icons.shopping_cart, color: Colors.white),
+          icon: Icon(Icons.shopping_cart, color: Colors.black),
           onPressed: () {},
         ),
       ],
