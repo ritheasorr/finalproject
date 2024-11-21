@@ -9,23 +9,23 @@ class FirestoreService{
   //Create
   addProduct() {
     return FirebaseFirestore.instance
-        .collection('products')
+        .collection('1')
         .add({});
   }
 
   addProductUniqueID(id, productName, productImg, productDetails, productCategory,productColors, productPrice, productSizes, productRating,productCount){
     return FirebaseFirestore.instance
-        .collection('products')
+        .collection('1')
         .doc(id)
-        .set({'id': id, 'ownerEmail': authService.getCurrentUser()!.email, 'productName': productName, 'productImg': productImg, 'productDetails': productDetails, 'productCategory': productCategory,'productColors': productColors, 'productPrice': productPrice, 'productSizes': productSizes, 'productRating': productRating, 'productCount': productCount});
+        .set({'id': id, 'ownerEmail': authService.getCurrentUser()!.email, 'Name': productName, 'ImageUrl': productImg, 'Description': productDetails, 'productCategory': productCategory,'Price': productPrice, 'productSizes': productSizes, 'productCount': productCount});
 
   }
 
-  Future<void> addUser(email, userName,phoneNo){
+  Future<void> addUser(email, userName, phoneNo){
     return FirebaseFirestore.instance
         .collection('users')
         .doc(email.toString().toLowerCase())
-        .set({'userName': userName, 'phoneNo': phoneNo});
+        .set({'userName': userName});
   }
 
   addToCart(id,ownerEmail, productName, productImg, productDetails, productCategory,productColors, productPrice, productSizes, productRating,productCount){
@@ -91,7 +91,6 @@ class FirestoreService{
         .doc(id)
         .delete();
   }
-
 
 
 

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:finalproject/screens/home_page.dart';
+
 import '../screens/cart_page.dart';
+
+import 'package:finalproject/screens/discovery_page.dart';
+
 
 
 class BottomNavigationBarExample extends StatefulWidget {
@@ -16,16 +20,10 @@ class _BottomNavigationBarExampleState
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
   TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  
   static List<Widget> _widgetOptions = <Widget>[
-    const HomePage(),// Index 0
-    const Text(
-      'Index 1: Discovery',
-      style: optionStyle,
-    ),
-    const Text(
-      'Index 2: Upload',
-      style: optionStyle,
-    ),
+    HomePage(),// Index 0
+    DiscoveryPage(),
     CartPage(),
     const Text(
       'Index 4: Profile',

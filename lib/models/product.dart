@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class Product {
   final String Name;
   final double Price;
+
   //final String Description;
   final String ImageUrl;
 
@@ -12,11 +13,13 @@ class Product {
     // required this.Description,
     required this.ImageUrl});
 
+
   factory Product.fromFirestore(DocumentSnapshot doc) {
     Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
     return Product(
       Name: data['Name']??'',
       Price: data['Price']??'' as double, // Type conversion
+
       // Description: data['Description']??'',
       ImageUrl: data['ImageUrl']??'',
     );
