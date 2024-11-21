@@ -43,8 +43,10 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Starter Template',
+      color: Colors.white,
       theme: ThemeData(
         primarySwatch: Colors.red,
+        scaffoldBackgroundColor: Colors.white,
       ),
 
       home: LoginScreen(),

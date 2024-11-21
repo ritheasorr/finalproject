@@ -1,4 +1,4 @@
-import 'package:finalproject/models/orders.dart';
+
 import 'package:finalproject/models/product.dart';
 import 'package:finalproject/models/users.dart';
 import 'package:finalproject/services/auth_service.dart';
@@ -102,16 +102,6 @@ class FirestoreService{
         .toList());
   }
 
-  Stream<List<Orders>> getUsersOrders() {
-    return FirebaseFirestore.instance
-        .collection('users')
-        .doc(authService.getCurrentUser()!.email)
-        .collection('users-orders-history')
-        .snapshots()
-        .map((snapshot) => snapshot.docs
-        .map<Orders>((doc) => Orders.fromMap(doc.data(), doc.id))
-        .toList(),);
-  }
 
   Stream<List<Product>> getProductsByRating() {
     return FirebaseFirestore.instance
