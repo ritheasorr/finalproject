@@ -12,6 +12,7 @@ import 'screens/login_screen.dart';
 
 import 'screens/register_screen.dart';
 import 'screens/reset_password_screen.dart';
+import 'screens/discovery_page.dart';
 
 
 void main() async {
@@ -43,6 +44,8 @@ class MyApp extends StatelessWidget {
           '/reset-password': (context) => ResetPasswordScreen(),
           '/home': (context) => HomePageNavigator(),
           '/orders': (context) => OrderHistoryPage(),
+          '/categories': (context) => DiscoveryPage(),
+
         },
       ),
     );
@@ -59,7 +62,7 @@ class _HomePageNavigatorState extends State<HomePageNavigator> {
 
   final List<Widget> _screens = [
     const HomePage(),
-    const Center(child: Text('Search Page Coming Soon')),
+    DiscoveryPage(),
     const Center(child: Text('Upload Page Coming Soon')),
     CartPage(),
     const Center(child: Text('Profile Page Coming Soon')),

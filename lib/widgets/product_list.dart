@@ -23,8 +23,10 @@ class ProductCard extends StatelessWidget {
         );
       },
       child: Card(
+        color: Colors.white,
+        shadowColor: Colors.blueGrey,
         child: SizedBox(
-          width: 180,
+          width: 160,
           child: Column(
             children: [
               Image.network(
@@ -47,31 +49,40 @@ class ProductCard extends StatelessWidget {
                   );
                 },
               ),
+              const SizedBox(height: 10),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start, // Aligns text to the top
                   children: [
-                    Text(
-                      product.Name,
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      '\$${product.Price.toStringAsFixed(2)}',
-                      style: const TextStyle(
-                        fontSize: 14,
-                        color: Colors.blue,
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start, // Align text horizontally left
+                        children: [
+                          Text(
+                            product.Name,
+                            style: const TextStyle(
+                              fontSize: 18,
+
+                            ),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          const SizedBox(height: 10),
+                          Text(
+                            '\$${product.Price}',
+                            style: const TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ],
                 ),
-              ),
+              )
             ],
           ),
         ),
@@ -102,7 +113,7 @@ class ProductList extends StatelessWidget {
         // print('Products in StreamBuilder: ${products.length}');
 
         return SizedBox(
-          height: 280,
+          height: 250,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: products.length,

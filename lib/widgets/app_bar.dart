@@ -8,8 +8,9 @@ class CAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       elevation: 0.1,
-      backgroundColor: Colors.white30,
+      backgroundColor: Colors.white,
       title: Text('Fenz'),
+      shadowColor: Colors.blueGrey,
       actions: <Widget>[
         IconButton(
           icon: Icon(Icons.search, color: Colors.black),

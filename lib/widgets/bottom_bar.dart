@@ -4,6 +4,7 @@ import 'package:finalproject/screens/home_page.dart';
 import '../screens/cart_page.dart';
 
 import 'package:finalproject/screens/discovery_page.dart';
+import 'package:finalproject/screens/upload_screen.dart';
 
 
 
@@ -24,10 +25,7 @@ class _BottomNavigationBarExampleState
   static List<Widget> _widgetOptions = <Widget>[
     HomePage(),// Index 0
     DiscoveryPage(),
-    const Text(
-      'Index 2: upload',
-      style: optionStyle,
-    ),
+    UploadPage(),
     CartPage(),
     const Text(
       'Index 4: Profile',
@@ -89,6 +87,7 @@ class _BottomNavigationBarExampleState
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.blue,
         unselectedItemColor: Colors.black,
+        backgroundColor: Colors.white,
         onTap: _onItemTapped,
       ),
     );

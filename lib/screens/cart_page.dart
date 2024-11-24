@@ -6,6 +6,7 @@ import '../models/product.dart';
 import '../providers/cart_provider.dart';
 import '../screens/home_page.dart';
 import 'order_history_page.dart';
+import 'package:finalproject/widgets/menu_button.dart';
 
 class CartPage extends StatelessWidget {
   final TextEditingController _promoCodeController = TextEditingController();
@@ -36,6 +37,7 @@ class CartPage extends StatelessWidget {
           ),
         ],
       ),
+      drawer: MenuButton(),
       body: cartProvider.cartItems.isEmpty
           ? const Center(child: Text('Your cart is empty'))
           : Column(
@@ -241,6 +243,7 @@ class CartPage extends StatelessWidget {
                         products: cartItems.map((item) => Product(
                           Name: item.Name,
                           Price: item.Price,
+
                           ImageUrl: item.ImageUrl,
                         )).toList(),
                         paidBy: 'Credit Card', // Replace with payment method

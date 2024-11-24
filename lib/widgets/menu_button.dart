@@ -14,6 +14,7 @@ class MenuButton extends StatefulWidget{
 class _MenuButton extends State<MenuButton>{
   Widget build(BuildContext context){
     return Drawer(
+      backgroundColor: Colors.white,
         child: new ListView(
           children: <Widget>[
             UserAccountsDrawerHeaderWidget(),

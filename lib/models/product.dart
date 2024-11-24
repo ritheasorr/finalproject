@@ -4,7 +4,7 @@ class Product {
   final String Name;
   final double Price;
 
-  //final String Description;
+  // final String Description;
   final String ImageUrl;
 
   Product({

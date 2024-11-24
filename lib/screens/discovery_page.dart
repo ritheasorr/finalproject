@@ -4,6 +4,7 @@ import 'package:finalproject/models/product.dart';
 import 'package:finalproject/widgets/app_bar.dart';
 import 'package:finalproject/widgets/dropdown_button.dart';
 import 'package:finalproject/widgets/menu_button.dart';
+import 'product_detail_page.dart';
 
 class DiscoveryPage extends StatefulWidget {
   const DiscoveryPage({super.key});
@@ -114,6 +115,15 @@ class FullScreenSearchPage extends StatelessWidget {
           final product = products[index];
           return ListTile(
             title: Text(product.Name),
+            onTap: (){
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                  builder: (context) => ProductDetailPage(product: product),
+              ),
+              );
+            }
+
           );
         },
       ),
