@@ -24,7 +24,8 @@ class _CategoryListState extends State<CategoryList> {
                   Navigator.pushNamed(context, '/home');
                 },
                 child: ListTile(
-                    title: Text('Wreck Cap')),
+                    title: Text('Wreck Cap'),
+                ),
               )
               ,
             ],

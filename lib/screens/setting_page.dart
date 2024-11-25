@@ -92,60 +92,112 @@ class _SettingPageState extends State<SettingPage> {
           // Account section
           const SizedBox(height: 16),
           const Text('Account', style: TextStyle(fontWeight: FontWeight.bold)),
-          ListTile(
-            leading: const Icon(Icons.shopping_bag, color: Colors.black87),
-            title: const Text('Orders'),
-            trailing: const Icon(Icons.arrow_forward_ios, color: Colors.grey),
+
+          InkWell(
+            onTap:(){
+              Navigator.pushNamed(context, '/orders');
+            },
+            child: ListTile(
+              leading: const Icon(Icons.shopping_bag, color: Colors.black87),
+              title: const Text('Orders'),
+              trailing: const Icon(Icons.arrow_forward_ios, color: Colors.grey),
+            ),
           ),
-          ListTile(
-            leading: const Icon(Icons.assignment_return, color: Colors.black87),
-            title: const Text('Returns'),
-            trailing: const Icon(Icons.arrow_forward_ios, color: Colors.grey),
+
+          InkWell(
+            onTap:(){
+            },
+            child: ListTile(
+              leading: const Icon(Icons.assignment_return, color: Colors.black87),
+              title: const Text('Returns'),
+              trailing: const Icon(Icons.arrow_forward_ios, color: Colors.grey),
+            ),
           ),
-          ListTile(
-            leading: const Icon(Icons.location_on, color: Colors.black87),
-            title: const Text('Addresses'),
-            trailing: const Icon(Icons.arrow_forward_ios, color: Colors.grey),
+
+          InkWell(
+            onTap:(){
+            },
+            child: ListTile(
+              leading: const Icon(Icons.location_on, color: Colors.black87),
+              title: const Text('Addresses'),
+              trailing: const Icon(Icons.arrow_forward_ios, color: Colors.grey),
+            ),
           ),
-          ListTile(
-            leading: const Icon(Icons.payment, color: Colors.black87),
-            title: const Text('Payment'),
-            trailing: const Icon(Icons.arrow_forward_ios, color: Colors.grey),
+
+          InkWell(
+            onTap:(){
+
+            },
+            child: ListTile(
+              leading: const Icon(Icons.payment, color: Colors.black87),
+              title: const Text('Payment'),
+              trailing: const Icon(Icons.arrow_forward_ios, color: Colors.grey),
+            ),
           ),
-          ListTile(
-            leading: const Icon(Icons.wallet, color: Colors.black87),
-            title: const Text('Wallet'),
-            trailing: const Icon(Icons.arrow_forward_ios, color: Colors.grey),
+
+          InkWell(
+            onTap:(){
+
+            },
+            child: ListTile(
+              leading: const Icon(Icons.wallet, color: Colors.black87),
+              title: const Text('Wallet'),
+              trailing: const Icon(Icons.arrow_forward_ios, color: Colors.grey),
+            ),
           ),
+
           const Divider(),
 
           // Settings section
           const SizedBox(height: 16),
           const Text('Setting', style: TextStyle(fontWeight: FontWeight.bold)),
-          ListTile(
-            leading: const Icon(Icons.language, color: Colors.black87),
-            title: const Text('Language'),
-            trailing: const Icon(Icons.arrow_forward_ios, color: Colors.grey),
+
+          InkWell(
+            onTap:(){
+
+            },
+            child: ListTile(
+              leading: const Icon(Icons.language, color: Colors.black87),
+              title: const Text('Language'),
+              trailing: const Icon(Icons.arrow_forward_ios, color: Colors.grey),
+            ),
           ),
-          ListTile(
-            leading: const Icon(Icons.location_city, color: Colors.black87),
-            title: const Text('Location'),
-            trailing: const Icon(Icons.arrow_forward_ios, color: Colors.grey),
+
+          InkWell(
+            onTap:(){
+
+            },
+            child: ListTile(
+              leading: const Icon(Icons.location_city, color: Colors.black87),
+              title: const Text('Location'),
+              trailing: const Icon(Icons.arrow_forward_ios, color: Colors.grey),
+            ),
           ),
           const Divider(),
 
           // Help & Support section
           const SizedBox(height: 16),
           const Text('Help & Support', style: TextStyle(fontWeight: FontWeight.bold)),
-          ListTile(
-            leading: const Icon(Icons.help_outline, color: Colors.black87),
-            title: const Text('Get Help'),
-            trailing: const Icon(Icons.arrow_forward_ios, color: Colors.grey),
+          InkWell(
+            onTap:(){
+
+            },
+            child: ListTile(
+              leading: const Icon(Icons.help_outline, color: Colors.black87),
+              title: const Text('Get Help'),
+              trailing: const Icon(Icons.arrow_forward_ios, color: Colors.grey),
+            ),
           ),
-          ListTile(
-            leading: const Icon(Icons.question_answer, color: Colors.black87),
-            title: const Text('FAQ'),
-            trailing: const Icon(Icons.arrow_forward_ios, color: Colors.grey),
+
+          InkWell(
+            onTap:(){
+
+            },
+            child: ListTile(
+              leading: const Icon(Icons.question_answer, color: Colors.black87),
+              title: const Text('FAQ'),
+              trailing: const Icon(Icons.arrow_forward_ios, color: Colors.grey),
+            ),
           ),
           const Divider(),
 
