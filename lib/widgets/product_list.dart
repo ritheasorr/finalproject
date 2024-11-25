@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:finalproject/screens/product.dart';
+import 'package:finalproject/models/product.dart';
 
 class ProductList extends StatelessWidget {
   const ProductList({Key? key}) : super(key: key);
@@ -20,7 +20,7 @@ class ProductList extends StatelessWidget {
         }
 
         List<Product> products = snapshot.data ?? [];
-        print('Products in StreamBuilder: ${products.length}');
+        // print('Products in StreamBuilder: ${products.length}');
 
         return SizedBox(
           height: 280,

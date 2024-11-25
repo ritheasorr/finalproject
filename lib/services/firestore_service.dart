@@ -1,4 +1,4 @@
-import 'package:finalproject/models/orders.dart';
+
 import 'package:finalproject/models/product.dart';
 import 'package:finalproject/models/users.dart';
 import 'package:finalproject/services/auth_service.dart';
@@ -9,23 +9,23 @@ class FirestoreService{
   //Create
   addProduct() {
     return FirebaseFirestore.instance
-        .collection('products')
+        .collection('1')
         .add({});
   }
 
   addProductUniqueID(id, productName, productImg, productDetails, productCategory,productColors, productPrice, productSizes, productRating,productCount){
     return FirebaseFirestore.instance
-        .collection('products')
+        .collection('1')
         .doc(id)
-        .set({'id': id, 'ownerEmail': authService.getCurrentUser()!.email, 'productName': productName, 'productImg': productImg, 'productDetails': productDetails, 'productCategory': productCategory,'productColors': productColors, 'productPrice': productPrice, 'productSizes': productSizes, 'productRating': productRating, 'productCount': productCount});
+        .set({'id': id, 'ownerEmail': authService.getCurrentUser()!.email, 'Name': productName, 'ImageUrl': productImg, 'Description': productDetails, 'productCategory': productCategory,'Price': productPrice, 'productSizes': productSizes, 'productCount': productCount});
 
   }
 
-  Future<void> addUser(email, userName,phoneNo){
+  Future<void> addUser(email, userName, phoneNo){
     return FirebaseFirestore.instance
         .collection('users')
         .doc(email.toString().toLowerCase())
-        .set({'userName': userName, 'phoneNo': phoneNo});
+        .set({'userName': userName});
   }
 
   addToCart(id,ownerEmail, productName, productImg, productDetails, productCategory,productColors, productPrice, productSizes, productRating,productCount){
@@ -98,20 +98,10 @@ class FirestoreService{
         .collection('products')
         .snapshots()
         .map((snapshot) => snapshot.docs
-        .map<Product>((doc) => Product.fromMap(doc.data(), doc.id))
+        .map<Product>((doc) => Product.fromFirestore(doc))
         .toList());
   }
 
-  Stream<List<Orders>> getUsersOrders() {
-    return FirebaseFirestore.instance
-        .collection('users')
-        .doc(authService.getCurrentUser()!.email)
-        .collection('users-orders-history')
-        .snapshots()
-        .map((snapshot) => snapshot.docs
-        .map<Orders>((doc) => Orders.fromMap(doc.data(), doc.id))
-        .toList(),);
-  }
 
   Stream<List<Product>> getProductsByRating() {
     return FirebaseFirestore.instance
@@ -119,7 +109,7 @@ class FirestoreService{
         .orderBy('productRating',descending: true)
         .snapshots()
         .map((snapshot) => snapshot.docs
-        .map<Product>((doc) => Product.fromMap(doc.data(), doc.id))
+        .map<Product>((doc) => Product.fromFirestore(doc))
         .toList());
   }
 
@@ -130,7 +120,7 @@ class FirestoreService{
         .where('productCategory', isEqualTo:categoryName)
         .snapshots()
         .map((snapshot) => snapshot.docs
-        .map<Product>((doc) => Product.fromMap(doc.data(), doc.id))
+        .map<Product>((doc) => Product.fromFirestore(doc))
         .toList());
   }
 
@@ -140,7 +130,7 @@ class FirestoreService{
         .where('productName', isEqualTo: searchInput )
         .snapshots()
         .map((snapshot) => snapshot.docs
-        .map<Product>((doc) => Product.fromMap(doc.data(), doc.id))
+        .map<Product>((doc) => Product.fromFirestore(doc))
         .toList());
   }
 
@@ -151,7 +141,7 @@ class FirestoreService{
         .collection('users-cart-items')
         .snapshots()
         .map((snapshot) => snapshot.docs
-        .map<Product>((doc) => Product.fromMap(doc.data(), doc.id))
+        .map<Product>((doc) => Product.fromFirestore(doc))
         .toList());
   }
 
@@ -162,7 +152,7 @@ class FirestoreService{
         .collection('users-liked-items')
         .snapshots()
         .map((snapshot) => snapshot.docs
-        .map<Product>((doc) => Product.fromMap(doc.data(), doc.id))
+        .map<Product>((doc) => Product.fromFirestore(doc))
         .toList());
   }
 

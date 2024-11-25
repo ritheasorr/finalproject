@@ -30,7 +30,7 @@ class _MenuButton extends State<MenuButton>{
             InkWell(
               onTap: () {
                 // Handle navigation to My Account page
-                Navigator.pushNamed(context, '/account');
+                Navigator.pushNamed(context, '/My Account');
               },
               child: ListTile(
                 title: Text('My Account'),
@@ -55,16 +55,6 @@ class _MenuButton extends State<MenuButton>{
               child: ListTile(
                 title: Text('Categories'),
                 leading: Icon(Icons.category),
-              ),
-            ),
-            InkWell(
-              onTap: () {
-                // Handle navigation to Wishlist page
-                Navigator.pushNamed(context, '/wishlist');
-              },
-              child: ListTile(
-                title: Text('Wishlist'),
-                leading: Icon(Icons.favorite),
               ),
             ),
             Divider(),
