@@ -72,7 +72,7 @@ class _UploadPageState extends State<UploadPage> {
 
         // Add API key and expiration fields
         request.fields['key'] = '0c34e8e13a05e32d8c8bfa0be628bbcf';
-        request.fields['expiration'] = '600';
+        request.fields['expiration'] = '1209600';
 
         // Send the request
         final response = await request.send();
