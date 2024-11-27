@@ -1,7 +1,11 @@
 
 import 'package:finalproject/screens/cart_page.dart';
 import 'package:finalproject/providers/cart_provider.dart';
+import 'package:finalproject/screens/categories_page.dart';
+import 'package:finalproject/screens/men_tab.dart';
 import 'package:finalproject/screens/order_history_page.dart';
+import 'package:finalproject/screens/setting_page.dart';
+import 'package:finalproject/screens/women_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'screens/home_page.dart';
@@ -45,6 +49,8 @@ class MyApp extends StatelessWidget {
           '/home': (context) => HomePageNavigator(),
           '/orders': (context) => OrderHistoryPage(),
           '/categories': (context) => DiscoveryPage(),
+          '/categories_page': (context) => CategoriesPage(),
+          '/setting_page': (context) => SettingPage(),
 
         },
       ),

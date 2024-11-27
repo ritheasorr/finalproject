@@ -23,18 +23,26 @@ class Product {
       // Description: data['Description']??'',
       ImageUrl: data['ImageUrl']??'',
     );
-
   }
 }
-
-Stream<List<Product>> getProducts() {
-  return FirebaseFirestore.instance
-      .collection('1') // Use the new collection name
-      .snapshots()
-      .map((snapshot) {
-    var products = snapshot.docs.map((doc) => Product.fromFirestore(doc)).toList();
-    return products;
+Stream<List<Product>> getProducts({String? category}) {
+  Query query = FirebaseFirestore.instance.collection('1'); // Replace '1' with your collection name
+  if (category != null) {
+    query = query.where('Category', isEqualTo: category); // Filter by category if provided
+  }
+  return query.snapshots().map((snapshot) {
+    return snapshot.docs.map((doc) => Product.fromFirestore(doc)).toList();
   });
 }
+
+// Stream<List<Product>> getProducts() {
+//   return FirebaseFirestore.instance
+//       .collection('1') // Use the new collection name
+//       .snapshots()
+//       .map((snapshot) {
+//     var products = snapshot.docs.map((doc) => Product.fromFirestore(doc)).toList();
+//     return products;
+//   });
+// }
 
 

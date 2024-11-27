@@ -17,7 +17,6 @@ class ProductDetailPage extends StatefulWidget {
 class _ProductDetailPageState extends State<ProductDetailPage> {
   String? selectedSize; // To track the selected size
   int quantity = 1; // Initial quantity
-  bool isLiked = false; // To track the "like" status
 
   @override
   Widget build(BuildContext context) {
@@ -172,15 +171,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
           ],
         ),
       ),
-      // bottomNavigationBar: BottomNavigationBarExample(
-      //   selectedIndex: _selectedIndex,
-      //   onItemTapped: _onItemTapped,
-      // ),
     );
   }
 }
-
-
-
-
 

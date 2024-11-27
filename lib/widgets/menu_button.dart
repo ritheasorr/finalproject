@@ -31,7 +31,7 @@ class _MenuButton extends State<MenuButton>{
             InkWell(
               onTap: () {
                 // Handle navigation to My Account page
-                Navigator.pushNamed(context, '/My Account');
+                Navigator.pushNamed(context, '/setting_page');
               },
               child: ListTile(
                 title: Text('My Account'),
@@ -51,7 +51,7 @@ class _MenuButton extends State<MenuButton>{
             InkWell(
               onTap: () {
                 // Handle navigation to Categories page
-                Navigator.pushNamed(context, '/categories');
+                Navigator.pushNamed(context, '/categories_page');
               },
               child: ListTile(
                 title: Text('Categories'),

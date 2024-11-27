@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:finalproject/screens/discovery_page.dart';
-
 import '../screens/cart_page.dart';
 
 class CAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -26,7 +24,6 @@ class CAppBar extends StatelessWidget implements PreferredSizeWidget {
                   (route) => false,
             );
           },
-
         ),
       ],
     );
