@@ -2,6 +2,7 @@
 import 'package:finalproject/screens/cart_page.dart';
 import 'package:finalproject/providers/cart_provider.dart';
 import 'package:finalproject/screens/categories_page.dart';
+import 'package:finalproject/screens/home_page.dart';
 import 'package:finalproject/screens/men_tab.dart';
 import 'package:finalproject/screens/order_history_page.dart';
 import 'package:finalproject/screens/setting_page.dart';

@@ -41,6 +41,8 @@ class _SettingPageState extends State<SettingPage> {
       appBar: AppBar(
         title: const Text('My Account'),
         automaticallyImplyLeading: false,
+        backgroundColor: Colors.white,
+        shadowColor: Colors.blueGrey,
       ),
       body: ListView(
         padding: const EdgeInsets.all(16.0),

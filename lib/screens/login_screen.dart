@@ -40,27 +40,24 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      body: Container(
-        child: SafeArea(
-          child: Column(
-            children: [
-              const Spacer(flex: 6),
-              Card(
-                margin: const EdgeInsets.all(15),
+      body: SafeArea(
+        child: Align(
+          alignment: Alignment.center, // Aligns the Card near the top
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.symmetric(vertical: 50), // Top and bottom padding
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 400), // Card width constraint
+              child: Card(
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20), // Added rounded corners to Card
+                  borderRadius: BorderRadius.circular(20),
                 ),
-                color: const Color(0xFFD0D6E1), // Changed Card color to light gray
-                child: Form(
-                  key: form,
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 10.0,
-                      horizontal: 20.0,
-                    ),
+                color: const Color(0xFFD0D6E1),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                  child: Form(
+                    key: form,
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.min, // Shrinks column height to content
                       children: [
                         const SizedBox(height: 20),
                         const Text(
@@ -68,23 +65,24 @@ class _LoginScreenState extends State<LoginScreen> {
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
-                            color: Colors.black, // Set title color to black
+                            color: Colors.black,
                           ),
                         ),
                         const SizedBox(height: 20),
+                        // Email TextFormField
                         Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 30),
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
                           child: TextFormField(
-                            style: const TextStyle(color: Colors.white), // text color
+                            style: const TextStyle(color: Colors.white),
                             decoration: InputDecoration(
                               filled: true,
-                              fillColor: const Color(0xFF13539E), // Set background color
+                              fillColor: const Color(0xFF13539E),
                               border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10), // Added rounded corners
-                                borderSide: BorderSide.none, // Removed border outline
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: BorderSide.none,
                               ),
                               labelStyle: const TextStyle(color: Colors.white),
-                              hintText: 'Email',
+                              hintText: 'test12@gmail.com',
                               hintStyle: const TextStyle(color: Colors.white),
                             ),
                             keyboardType: TextInputType.emailAddress,
@@ -103,26 +101,27 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                         const SizedBox(height: 20),
+                        // Password TextFormField
                         Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 30),
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
                           child: TextFormField(
-                            style: const TextStyle(color: Colors.white), // text color
+                            style: const TextStyle(color: Colors.white),
                             obscureText: _ishidden,
                             decoration: InputDecoration(
                               filled: true,
-                              fillColor: const Color(0xFF13539E), // Set background color
+                              fillColor: const Color(0xFF13539E),
                               border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10), // Added rounded corners
-                                borderSide: BorderSide.none, // Removed border outline
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: BorderSide.none,
                               ),
-                              hintText: 'Password',
+                              hintText: 'test123',
                               hintStyle: const TextStyle(color: Colors.white),
                               suffixIcon: IconButton(
                                 icon: Icon(
                                   _ishidden
                                       ? Icons.visibility
                                       : Icons.visibility_off,
-                                  color: Colors.white, // Changed icon color to white
+                                  color: Colors.white,
                                 ),
                                 onPressed: () {
                                   setState(() {
@@ -146,23 +145,24 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                         const SizedBox(height: 20),
+                        // Login Button
                         SizedBox(
                           height: 50,
-                          width: 200,
+                          width: double.infinity,
                           child: ElevatedButton(
                             onPressed: () {
                               login();
                             },
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.black, // Set button background color t
+                              backgroundColor: Colors.black,
                               shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10), // Added rounded corners to button
+                                borderRadius: BorderRadius.circular(10),
                               ),
                             ),
                             child: const Text(
                               'Log In',
                               style: TextStyle(
-                                color: Colors.white, // Set button text color
+                                color: Colors.white,
                                 fontSize: 20.0,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -170,6 +170,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                         const SizedBox(height: 10),
+                        // Forgot Password
                         InkWell(
                           onTap: () {
                             Navigator.of(context).pushNamed('/reset-password');
@@ -184,6 +185,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                         const SizedBox(height: 10),
+                        // Sign Up
                         InkWell(
                           onTap: () {
                             Navigator.of(context).pushNamed('/register');
@@ -202,11 +204,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
               ),
-              const Spacer(flex: 4),
-            ],
+            ),
           ),
         ),
       ),
     );
+
   }
 }

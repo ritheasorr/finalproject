@@ -51,7 +51,7 @@ class _MenuButton extends State<MenuButton>{
             InkWell(
               onTap: () {
                 // Handle navigation to Categories page
-                Navigator.pushNamed(context, '/categories_page');
+                Navigator.pushNamed(context, '/categories');
               },
               child: ListTile(
                 title: Text('Categories'),

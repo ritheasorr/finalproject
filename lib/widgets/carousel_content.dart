@@ -14,15 +14,12 @@ class CarouselContent extends StatelessWidget {
         autoPlayAnimationDuration: Duration(milliseconds: 3000),
       ),
       items: [
-        'assets/images/first.png',
-        'assets/images/Wrack-post.png',
-        'assets/images/Fence.png',
-        'assets/images/two.png',
-        'assets/images/three.png',
+        'https://res.cloudinary.com/dafudehxr/image/upload/f_auto,q_auto/hsjxnockhmpl3jyzdy1q',
+        'https://res.cloudinary.com/dafudehxr/image/upload/f_auto,q_auto/yijkuztpv7l8hzxqsvyg',
       ].map((imagePath) {
         return Builder(
           builder: (BuildContext context) {
-            return Image.asset(
+            return Image.network(
               imagePath,
               fit: BoxFit.cover,
               width: MediaQuery.of(context).size.width,
